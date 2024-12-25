@@ -472,7 +472,9 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef* htim)
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* USER CODE BEGIN TIM2_MspPostInit 1 */
-
+#ifdef A2F_MODE  
+    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_10);
+#endif 
   /* USER CODE END TIM2_MspPostInit 1 */
   }
   else if(htim->Instance==TIM3)
@@ -493,7 +495,9 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef* htim)
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* USER CODE BEGIN TIM3_MspPostInit 1 */
-
+#ifdef A2F_MODE  
+    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_1);
+#endif 
   /* USER CODE END TIM3_MspPostInit 1 */
   }
 

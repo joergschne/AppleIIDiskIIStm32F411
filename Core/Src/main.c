@@ -218,7 +218,9 @@ UART
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
+#ifdef A2F_MODE
+#pragma message("...building with A2F mode!")
+#endif
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -1705,7 +1707,26 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(WR_REQ_GPIO_Port, &GPIO_InitStruct);
+#ifdef A2F_MODE
+/*Configure GPIO pin : AB_Pin */
+  GPIO_InitStruct.Pin = AB_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  HAL_GPIO_Init(AB_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : ENCODER_A_Pin */
+  GPIO_InitStruct.Pin = ENCODER_A_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(ENCODER_A_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : ENCODER_B_Pin */
+  GPIO_InitStruct.Pin = ENCODER_B_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(ENCODER_B_GPIO_Port, &GPIO_InitStruct);
+#endif
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
 }
