@@ -1091,7 +1091,7 @@ int main(void){
   // --------------------------------------------------------------------
   // Prepate emulation mode
   // --------------------------------------------------------------------
-  emulationType=DISKII;
+  //emulationType=DISKII;
   emulationType=SMARTPORTHD;
 
   switch(emulationType){
